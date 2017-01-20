@@ -1,0 +1,77 @@
+.TH WH 1 "JANUARY 2017" Linux "User Manuals"                                  
+.SH NAME                                                                     
+wh \- A test/stress tool capable to send heavy network traffic composed by malformed icmp packets.
+.SH SYNOPSIS                                                                 
+.B  wh [-i interface] 
+   [-h] 
+.SH DESCRIPTION                                                              
+.B wh                                                                       
+Wh (Wild Horde) is a test/stress tool capable to send heavy network traffic composed by malformed icmp packets fo test purpose. It's useful to investigate bug and to find out vulnerabilies.
+
+A configuration file or batch script can be passed via pipe.
+
+The program has its own "shell like" interface: it can be used in three ways:
+
+- batch;
+- interactive;
+- mixed;
+
+In batch mode, you can pass a configuration file via pipe:
+
+  cat conf.txt | ./wh -ieth0
+
+If the configuration file contains the command "wexit", the program will terminate when all the tasks specified in the configuration file will be executed.
+Not specifying "wexit", you are using the mixed mode: after the launch of the batch operation in background an iteractive shell will be available.
+If no configuration is specified, the interactive shell will be available instantly.
+
+The program is multihreading and permit to launch jobs in background against multiple targets or against a single target with multiple kind of attack.
+
+Every job get the IP header value, network interface limits and timout constraints fron the  environment.
+You can print/modify the environment with the set command:
+
+- set all print the current configuration:
+
+![alt text](screenshoots/handshake.png "Set all screenshoot")
+
+- To change a value:
+
+  set <var> <value>
+
+a single space is the separator.
+
+All the following jobs will use that configuration for all their execution. Change in the configuration will affect only the new jobs.
+
+- To create a job:
+
+  job <target_ip> <type> <code> <pause>
+
+where target_ip is the ip address of the target, type the ICMP type, code the ICMP code, pause the time in usecond between the dispatch of two packets and can be used to limit the bandwidth / system resources.
+
+- Job control:
+
+The list command print a list of the jobs in execution. A job can be terminated with the kill command using the "pid" specified int he first column of the list output.
+
+- To closhe the shell:
+
+  exit
+
+
+- Help info
+
+  help
+
+.SH OPTIONS                                                       
+.IP -i interface
+Specifies the initial network interface. 
+.IP -h
+A short description of wh command line syntax.
+.SH BUGS                                                                     
+This program is an alpha, massive changes are possible.
+.SH AUTHOR                                                                   
+Gabriele Bonacini <gabriele.bonacini@protonmail.com>
+.SH "SEE ALSO"                                                               
+Linux: ip(7) icmp(7) 
+
+Os X:  ip(4) icmp(4) 
+
+RFC 792 for a description of the ICMP protocol
