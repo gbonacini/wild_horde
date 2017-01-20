@@ -18,4 +18,4 @@ makefile.dist
 include/config.h.in~
 include/stamp-h1
 files
-
+src/wh

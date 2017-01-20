@@ -7,7 +7,7 @@ AC_INIT([tssh], m4_esyscmd([ tr -d '\n' < version ]))
 CXXFLAGS=""
 LDFLAGS=""
 
-AC_CONFIG_SRCDIR([src/dh.cpp])
+AC_CONFIG_SRCDIR([src/wh.cpp])
 
 AC_CONFIG_HEADER([include/config.h])
 
