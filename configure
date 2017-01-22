@@ -592,7 +592,7 @@ PACKAGE_STRING='tssh 0.2.1'
 PACKAGE_BUGREPORT=''
 PACKAGE_URL=''
 
-ac_unique_file="src/wh.cpp"
+ac_unique_file="src/wh_main.cpp"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>

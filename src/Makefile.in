@@ -95,7 +95,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_wh_OBJECTS = wh.$(OBJEXT)
+am_wh_OBJECTS = wh_main.$(OBJEXT) wh.$(OBJEXT)
 wh_OBJECTS = $(am_wh_OBJECTS)
 wh_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -316,7 +316,7 @@ top_srcdir = @top_srcdir@
 dist_man_MANS = ../doc/wh.1
 
 # nobase_include_HEADERS   = ../include
-wh_SOURCES = wh.cpp 
+wh_SOURCES = wh_main.cpp wh.cpp
 all: all-am
 
 .SUFFIXES:
@@ -412,6 +412,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wh.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wh_main.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
