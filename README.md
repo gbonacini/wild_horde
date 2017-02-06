@@ -100,6 +100,8 @@ To compile the program, this tools/libraries are necessary:
 - libreadline;
 - libcap (Only Linux, capabilities lib);
 
+( on Debian/Ubuntu the packages are: libreadline-dev  and libcap-dev, on RHEL7: libcap-devel.x86_64 and readline-devel.x86_64 ).
+
 Installation:
 =============
 
