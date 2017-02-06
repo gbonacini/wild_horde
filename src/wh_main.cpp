@@ -26,10 +26,13 @@
 using namespace std;
 using namespace wh;
 
-#ifndef LINUX_OS
+
+#ifdef __clang__
+  void printInfo(char* cmd) __attribute__((noreturn));
+#else
   [[ noreturn ]]
+  void printInfo(char* cmd);
 #endif
-void printInfo(char* cmd);
 
 int main(int argc, char** argv){
    const char  flags[]      = "hi:";
@@ -55,9 +58,16 @@ int main(int argc, char** argv){
              break;
              case 'h':
                 printInfo(argv[0]);
+                #ifdef __clang__
+                #pragma clang diagnostic push
+                #pragma clang diagnostic ignored "-Wimplicit-fallthrough"
+                #endif
              default:
                 cerr << "Invalid parameter." << endl << endl;
                 printInfo(argv[0]);
+                #ifdef __clang__
+                #pragma clang diagnostic pop
+                #endif
           }
        }
     

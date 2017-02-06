@@ -29,28 +29,30 @@ namespace wh{
        {  if(noRoot) 
              if(uid == 0 || gid == 0 )
                  throw CapabilityException("Root user or group are not permitted: use a standard user instead.");
-       };
+       }
 
        Capability::~Capability(void){
           cap_free(cap);
           cap_free(nullptr);
        }
 
-       void Capability::printStatus(void) const{
+       void Capability::printStatus(void) const noexcept(true){
            cerr << "UID: " << to_string(uid) << " EUID: " << to_string(euid) << endl;
            cerr << "GID: " << to_string(gid) << " GID:  " << to_string(egid) << endl;
            cerr << "Running with capabilities: " << cap_to_text(cap, NULL)  << endl;
        }
 
-       void Capability::getCredential(void){
+       void Capability::getCredential(void) noexcept(false){
            uid  = getuid();
            euid = geteuid(); 
            gid  = getgid();
            egid = getegid();
            cap  = cap_get_proc();
+           if(cap == nullptr)
+               throw CapabilityException(string("Capability error reading credential: ") + strerror(errno));
        }
 
-       void Capability::reducePriv(const string capText){
+       void Capability::reducePriv(const string capText) noexcept(false){
            if(prctl(PR_SET_KEEPCAPS, 1) ==  -1)
                throw CapabilityException(string("Capability setting error(a): ") + strerror(errno));
            newcaps                      = cap_from_text(capText.c_str());
@@ -655,7 +657,7 @@ namespace wh{
                                     codeMin = 0;
                                     codeMax = 255;
                                 }else{ 
-                                    codeMin = get<CODEMIN>(i.second) != 255 ? get<CODEMIN>(i.second) : 0,
+                                    codeMin = get<CODEMIN>(i.second) != 255 ? get<CODEMIN>(i.second) : 0;
                                     codeMax = get<CODEMIN>(i.second) != 255 ? get<CODEMAX>(i.second) : 0;
                                 }
            

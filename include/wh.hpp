@@ -88,15 +88,15 @@ namespace wh{
             public:
                    explicit  Capability(bool noRoot);
                              ~Capability(void);
-                   void      printStatus(void)                         const;
-                   void      getCredential(void);
-                   void      reducePriv(const std::string capText);
+                   void      printStatus(void)                         const  noexcept(true);
+                   void      getCredential(void)                              noexcept(false);
+                   void      reducePriv(const std::string capText)            noexcept(false);
 
             private:
                    uid_t     uid,
                              euid;
                    gid_t     gid,
-                             egid;;
+                             egid;
                    cap_t     cap,
                              newcaps;
         };
