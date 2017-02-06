@@ -114,3 +114,9 @@ Instructions:
 
 See the man page included in the release.
 
+Trivia:
+=======
+
+![alt text](screenshoots/nobody.png "trivia")
+
+Why the name "Wild Horde" ? I like "spaghetti western" and a piece of the OST of the film "My name is Nobody" of the great Ennio Morricone is just "Wild Horde". :-)
