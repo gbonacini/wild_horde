@@ -31,36 +31,35 @@ AC_HEADER_STDC
 AC_C_CONST
 AC_TYPE_SIZE_T
 
-# Libs list autmatically generated prom dependecy script
-AC_CHECK_LIB([readline],[readline],[],[AC_MSG_FAILURE([could not find lib readline])])
-
 AC_CANONICAL_HOST
 case $host_os in
   darwin* )
+              BUILD_OSX=true
               OPTIMIZATION="-O2 "
               if test "x$CC" = xgcc; then
                     CXXFLAGS=" -std=c++11 -g -Weverything -DMAC_OSX\
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
                              --param=ssp-buffer-size=4 -Wformat -Werror=format-security \
                              -Wno-deprecated-declarations -Wno-documentation -Wno-c++98-compat \
-                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template ${INC_SSL_CUSTOM}"
-		    LDFLAGS="$LDFLAGS ${LIB_SSL_CUSTOM}"
+                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template "
+		    LDFLAGS="$LDFLAGS  "
               else
                     CXXFLAGS=" -std=c++11 -O2 -g -Wall -DMAC_OSX"
-		    LDFLAGS="$LDFLAGS ${LIB_SSL_CUSTOM}"
+		    LDFLAGS="$LDFLAGS  "
               fi
 
         ;;
   linux*)
+              BUILD_LINUX=true
               OPTIMIZATION="-O2 "
               if test "x$CC" = xgcc; then
-                    CXXFLAGS=" -std=c++11 -g -Wall -Wextra -DLINUX_OS\
+                    CXXFLAGS=" -std=c++11 -pthread -g -Wall -Wextra -DLINUX_OS\
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
-                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security ${INC_SSL_CUSTOM}"
-                    LDFLAGS="$LDFLAGS ${LIB_SSL_CUSTOM}-Wl,-z,relro"
+                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security "
+                    LDFLAGS="$LDFLAGS  -Wl,-z,relro "
               else
-                    CXXFLAGS=" -std=c++11 -O2 -g -Wall -DLINUX_OS"
-		    LDFLAGS="$LDFLAGS ${LIB_SSL_CUSTOM}"
+                    CXXFLAGS=" -std=c++11 -pthread -O2 -g -Wall -DLINUX_OS"
+		    LDFLAGS="$LDFLAGS  "
               fi
         ;;
     *)
@@ -68,6 +67,11 @@ case $host_os in
         ;;
 esac
 
-
+# Libs list autmatically generated prom dependecy script
+AC_CHECK_LIB([readline],[readline],[],[AC_MSG_FAILURE([could not find lib readline])])
+AS_IF([test "x$BUILD_LINUX" = xtrue],
+	[
+          AC_CHECK_LIB([cap],[cap_get_proc],[],[AC_MSG_FAILURE([could not find lib capability])])
+	])
 
 AC_OUTPUT

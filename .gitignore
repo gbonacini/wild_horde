@@ -19,3 +19,4 @@ include/config.h.in~
 include/stamp-h1
 files
 src/wh
+.DS_Store

@@ -2,12 +2,11 @@ Description:
 ============
 
 Wh (Wild Horde) is a test/stress tool capable to send heavy network traffic composed by malformed icmp packets.
-After the publication of the Blacknurse bug, I was wondering how many network appliance, IOT devices, etc could be affected by similar problems, so I started to write this tool for that purpose.
+After the publication of the Blacknurse bug, I was wondering how many network appliance, IOT devices, etc could be affected by similar problems, so I started to write this tool for that purpose and for fun (mostly for fun :-) ).
 
-Thcwese are some screeshoots of the wh console: 
+These are some screeshoots of the wh console: 
 
-![alt text](screenshoots/handshake.png "Tssh screenshoot")
-![alt text](screenshoots/handshake.png "Tssh screenshoot")
+![alt text](screenshoots/wh_help.png "Wh help info")
 
 DISCLAIMER:
 ===========
@@ -44,7 +43,7 @@ You can print/modify the environment with the set command:
 
 - set all print the current configuration:
 
-![alt text](screenshoots/handshake.png "Set all screenshoot")
+![alt text](screenshoots/wh_env.png "Wh settable env variables")
 
 - To change a value:
 
@@ -60,6 +59,8 @@ All the following jobs will use that configuration for all their execution. Chan
 
 where target_ip is the ip address of the target, type the ICMP type, code the ICMP code, pause the time in usecond between the dispatch of two packets and can be used to limit the bandwidth / system resources.
 
+![alt text](screenshoots/wh_job.png "Wh job execution")
+
 - Job control:
 
 The list command print a list of the jobs in execution. A job can be terminated with the kill command using the "pid" specified int he first column of the list output.
@@ -67,7 +68,6 @@ The list command print a list of the jobs in execution. A job can be terminated 
 - To closhe the shell:
 
   exit
-
 
 - Help info
 
@@ -96,8 +96,7 @@ using, as compiler, one in this list:
 To compile the program, this tools/libraries are necessary:
 
 - a c++ compiler ( with c++11 support);
-- automake/autoconf;
-- libtool;
+- automake/autoconf with libtool;
 - libreadline.
 
 Installation:

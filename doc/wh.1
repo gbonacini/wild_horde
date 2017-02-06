@@ -5,26 +5,25 @@ wh \- A test/stress tool capable to send heavy network traffic composed by malfo
 .B  wh [-i interface] 
    [-h] 
 .SH DESCRIPTION                                                              
-.B wh                                                                       
-Wh (Wild Horde) is a test/stress tool capable to send heavy network traffic composed by malformed icmp packets fo test purpose. It's useful to investigate bug and to find out vulnerabilies.
+.B wh (Wild Horde) 
+is a test/stress tool capable to send heavy network traffic composed by malformed icmp packets fo test purpose. It's useful to investigate bugs and to find out vulnerabilies.
 
 A configuration file or batch script can be passed via pipe.
 
-The program has its own "shell like" interface: it can be used in three ways:
+The program has its own "shell like" interface. It can be used in three ways:
 
-- batch;
-- interactive;
-- mixed;
+ - batch;
+ - interactive;
+ - mixed.
 
 In batch mode, you can pass a configuration file via pipe:
 
   cat conf.txt | ./wh -ieth0
 
 If the configuration file contains the command "wexit", the program will terminate when all the tasks specified in the configuration file will be executed.
-Not specifying "wexit", you are using the mixed mode: after the launch of the batch operation in background an iteractive shell will be available.
-If no configuration is specified, the interactive shell will be available instantly.
+Not specifying "wexit", you are using the mixed mode: after the launch of the batch operation in background an iteractive shell will be available. If no configuration is specified, the interactive shell will be available instantly.
 
-The program is multihreading and permit to launch jobs in background against multiple targets or against a single target with multiple kind of attack.
+The program is multihreading and permits to launch jobs in background against multiple targets or against a single target with multiple kind of attack.
 
 Every job get the IP header value, network interface limits and timout constraints fron the  environment.
 You can print/modify the environment with the set command:
@@ -51,6 +50,12 @@ where target_ip is the ip address of the target, type the ICMP type, code the IC
 
 The list command print a list of the jobs in execution. A job can be terminated with the kill command using the "pid" specified int he first column of the list output.
 
+- Scan mode:
+
+A special kind of job is available: scan. Launching a scan job multiple combination of malformed packets will be send to the target.
+
+  scan <target_ip> <pause>
+
 - To closhe the shell:
 
   exit
@@ -70,8 +75,6 @@ This program is an alpha, massive changes are possible.
 .SH AUTHOR                                                                   
 Gabriele Bonacini <gabriele.bonacini@protonmail.com>
 .SH "SEE ALSO"                                                               
-Linux: ip(7) icmp(7) 
-
-Os X:  ip(4) icmp(4) 
-
-RFC 792 for a description of the ICMP protocol
+ Linux: ip(7) icmp(7);
+ Os X:  ip(4) icmp(4);
+ RFC 792 for a description of the ICMP protocol.
