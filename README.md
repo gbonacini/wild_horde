@@ -97,7 +97,8 @@ To compile the program, this tools/libraries are necessary:
 
 - a c++ compiler ( with c++11 support);
 - automake/autoconf with libtool;
-- libreadline.
+- libreadline;
+- libconv (Linux, capabilities lib);
 
 Installation:
 =============
