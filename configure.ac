@@ -41,8 +41,7 @@ case $host_os in
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
                              --param=ssp-buffer-size=4 -Wformat -Werror=format-security \
                              -Wno-deprecated-declarations -Wno-documentation -Wno-c++98-compat \
-                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template \
-                             -Wno-misleading-indentation "
+                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template "
 		    LDFLAGS="$LDFLAGS  "
               else
                     CXXFLAGS=" -std=c++11 -O2 -g -Wall -DMAC_OSX"
@@ -56,7 +55,8 @@ case $host_os in
               if test "x$CC" = xgcc; then
                     CXXFLAGS=" -std=c++11 -pthread -g -Wall -Wextra -DLINUX_OS\
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
-                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security "
+                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security 
+                             -Wno-misleading-indentation "
                     LDFLAGS="$LDFLAGS  -Wl,-z,relro "
               else
                     CXXFLAGS=" -std=c++11 -pthread -O2 -g -Wall -DLINUX_OS"
