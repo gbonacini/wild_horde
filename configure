@@ -15375,7 +15375,8 @@ case $host_os in
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
                              --param=ssp-buffer-size=4 -Wformat -Werror=format-security \
                              -Wno-deprecated-declarations -Wno-documentation -Wno-c++98-compat \
-                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template "
+                             -Wno-padded -Wno-c++98-compat-pedantic -Wno-undefined-func-template \
+                             -Wno-misleading-indentation "
 		    LDFLAGS="$LDFLAGS  "
               else
                     CXXFLAGS=" -std=c++11 -O2 -g -Wall -DMAC_OSX"
