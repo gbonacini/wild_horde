@@ -15389,7 +15389,7 @@ case $host_os in
               if test "x$CC" = xgcc; then
                     CXXFLAGS=" -std=c++11 -pthread -g -Wall -Wextra -DLINUX_OS\
                              -D_FORTIFY_SOURCE=2 ${OPTIMIZATION} -fstack-protector \
-                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security
+                             --param=ssp-buffer-size=4 -Wformat -Werror=format-security \
                              -Wno-misleading-indentation "
                     LDFLAGS="$LDFLAGS  -Wl,-z,relro "
               else
