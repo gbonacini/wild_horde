@@ -1000,7 +1000,7 @@ namespace wh{
         return 0;
     }
     
-    int Wh::parseCommand(CMDTYPE type) const noexcept(true){
+    int Wh::parseCommand(CMDTYPE type) const noexcept(false){
          int ret           = 0;
          try{
              switch(type){

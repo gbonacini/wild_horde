@@ -168,7 +168,7 @@ namespace wh{
            void          getLocalIp(void)                                          noexcept(false);
            void          resetIpHdr(void)                                          noexcept(false);
            uint16_t      checksum(void *buff, size_t len)                  const   noexcept(true);
-           int           parseCommand(CMDTYPE type)                        const   noexcept(true);
+           int           parseCommand(CMDTYPE type)                        const   noexcept(false);
            int           setPayloadMode(std::string& mode, PAYLOAD type)           noexcept(true);
            int           setPrintMode(std::string& mode)                           noexcept(true);
            int           setScanMode(std::string& mode)                            noexcept(true);
